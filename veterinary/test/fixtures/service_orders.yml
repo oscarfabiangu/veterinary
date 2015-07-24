@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-07-24 04:48:33
+  observation: MyString
+  price: 1
+  detail_order_id: 
+
+two:
+  date: 2015-07-24 04:48:33
+  observation: MyString
+  price: 1
+  detail_order_id: 

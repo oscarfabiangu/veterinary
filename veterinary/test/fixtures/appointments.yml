@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2015-07-24 04:45:51
+  description: MyString
+  state: MyString
+  customer_id: 
+
+two:
+  date: 2015-07-24 04:45:51
+  description: MyString
+  state: MyString
+  customer_id: 

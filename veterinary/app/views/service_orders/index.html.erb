@@ -1,0 +1,45 @@
+<%- model_class = ServiceOrder -%>
+<div class="content-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<section class="content">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= model_class.human_attribute_name(:id) %></th>
+        <th><%= model_class.human_attribute_name(:date) %></th>
+        <th><%= model_class.human_attribute_name(:observation) %></th>
+        <th><%= model_class.human_attribute_name(:price) %></th>
+        <th><%= model_class.human_attribute_name(:detail_order_id) %></th>
+        <th><%= model_class.human_attribute_name(:created_at) %></th>
+        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @service_orders.each do |service_order| %>
+        <tr>
+          <td><%= link_to service_order.id, service_order_path(service_order) %></td>
+          <td><%= service_order.date %></td>
+          <td><%= service_order.observation %></td>
+          <td><%= service_order.price %></td>
+          <td><%= service_order.detail_order_id %></td>
+          <td><%=l service_order.created_at %></td>
+          <td>
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_service_order_path(service_order), :class => 'btn btn-default btn-xs' %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                        service_order_path(service_order),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-xs btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_service_order_path,
+              :class => 'btn btn-primary' %>
+</section>
