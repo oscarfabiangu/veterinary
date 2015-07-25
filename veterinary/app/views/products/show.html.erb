@@ -9,10 +9,10 @@
       <dd><%= @product.name %></dd>
       <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
       <dd><%= @product.description %></dd>
-      <dt><strong><%= model_class.human_attribute_name(:type) %>:</strong></dt>
-      <dd><%= @product.type %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:product_type) %>:</strong></dt>
+      <dd><%= @product.product_type %></dd>
       <dt><strong><%= model_class.human_attribute_name(:cost) %>:</strong></dt>
-      <dd><%= @product.cost %></dd>
+      <dd>S/. <%= @product.cost %> </dd>
     </dl>
     
     <%= link_to t('.back', :default => t("helpers.links.back")),

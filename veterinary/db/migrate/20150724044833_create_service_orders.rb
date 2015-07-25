@@ -5,7 +5,8 @@ class CreateServiceOrders < ActiveRecord::Migration
       t.string :observation
       t.integer :price
       t.references :detail_order, index: true, foreign_key: true
-
+      t.references :customer, index: true, foreign_key: true
+      
       t.timestamps null: false
     end
   end

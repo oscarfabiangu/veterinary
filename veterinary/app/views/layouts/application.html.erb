@@ -7,15 +7,14 @@
   <%= csrf_meta_tags %>
   
 </head>
-<body  class="skin-purple layout-boxed sidebar-mini">
+<body  class="skin-purple layout-boxed">
+  
 <!-- Site wrapper -->
     <div class="wrapper">
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="#" class="logo">
-          <span class="logo-lg"><b>Ve</b>terinary</span>
-        </a>
+        <%= link_to '<span class="logo-lg"><b>Ve</b>terinary</span>'.html_safe ,root_path, :class => "logo" %>
 
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -35,7 +34,7 @@
                     <ul class="menu">
                       <li>
                         <a href="#">
-                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                          <i class="fa fa-users text-aqua"></i> 4 new members joined today
                         </a>
                       </li>
                     </ul>
@@ -44,43 +43,33 @@
                 </ul>
               </li>
               <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image" />
-                  <span class="hidden-xs">Alexander Pierce</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                    <p>
-                      Alexander Pierce - Web Developer
-                      <small>Member since Nov. 2012</small>
-                    </p>
-                  </li>
-                  <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </li>
-                  <!-- Menu Footer-->
-                  <li class="user-footer">
-                    <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                    </div>
-                  </li>
-                </ul>
-              </li>
+              
+              <% if user_signed_in? %>
+                <li class="dropdown user user-menu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= image_tag 'user2-160x160.jpg', :class => 'user-image' %>
+                    <span class="hidden-xs"><%= current_user.email %></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header">
+                      <%= image_tag 'user2-160x160.jpg', :class => 'img-circle' %>
+                      <p>
+                       <%= current_user.email %>
+                      </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                      <div class="pull-left">
+                        <%= link_to 'Profile', edit_user_registration_path, :class => 'btn btn-default btn-flat' %>
+                      </div>
+                      <div class="pull-right">
+                        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-default btn-flat'  %>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+               <% end %>
             </ul>
           </div>
         </nav>
@@ -94,12 +83,11 @@
         <section class="sidebar">
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            
-            <li><%= link_to '<i class="fa fa-users"></i> Customers'.html_safe, customers_path %></li>
-            <li><%= link_to '<i class="fa fa-github-alt"></i> Pets'.html_safe, pets_path %></li>
             <li><%= link_to '<i class="fa fa-calendar"></i> Appointments'.html_safe, appointments_path %></li>
-            <li><%= link_to '<i class="fa fa-shopping-cart"></i> Products'.html_safe, products_path %></li>
-            <li><%= link_to '<i class="fa fa-calendar"></i> Sales'.html_safe, service_orders_path %></li>
+            <li><%= link_to '<i class="fa fa-users"></i> Customers'.html_safe, customers_path %></li>
+            <li><%= link_to '<i class="fa fa-paw"></i> Pets'.html_safe, pets_path %></li>
+            <li><%= link_to '<i class="fa fa-cubes"></i> Products'.html_safe, products_path %></li>
+            <li><%= link_to '<i class="fa fa-shopping-cart"></i> Sales'.html_safe, service_orders_path %></li>
           </ul>
         </section>
         <!-- /.sidebar -->

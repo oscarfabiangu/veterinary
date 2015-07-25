@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => {:sessions => "sessions"}
   resources :service_orders
   resources :detail_orders
   resources :appointments
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root :to => 'appointments#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

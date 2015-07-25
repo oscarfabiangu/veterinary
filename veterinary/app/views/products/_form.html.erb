@@ -1,4 +1,4 @@
-<%= form_for @product, :html => { :class => "form-horizontal product" } do |f| %>
+<%= simple_form_for @product do |f| %>
 
     <% if @product.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -30,11 +30,11 @@
     <%= error_span(@product[:description]) %>
   </div>
   <div class="control-group">
-    <%= f.label :type, :class => 'control-label' %>
+    <%= f.label :product_type, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :type, :class => 'form-control' %>
+      <%= f.text_field :product_type, :class => 'form-control' %>
     </div>
-    <%= error_span(@product[:type]) %>
+    <%= error_span(@product[:product_type]) %>
   </div>
   <div class="control-group">
     <%= f.label :cost, :class => 'control-label' %>
